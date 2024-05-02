@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+</head>
+<body>
+
+<h2>Hello, World!</h2>
+<form id="create-resource" autocomplete="off" name="create-resource" action="/submit-resource" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="create-resource" value="1">
+    <label for="type" style="font-weight: bold;">Resource type:</label>
+    <select name="type" id="type" required>
+      <option value="Adult manikin">Adult manikin</option>
+      <option value="Pediatric manikin">Pediatric manikin</option>
+      <option value="Infant manikin">Infant manikin</option>
+      <option value="AED trainer">AED trainer</option>
+      <option value="STB kit">STB kit</option>
+    </select></br>
+    <label for="resource_name" style="font-weight: bold;">Name:</label>
+  <input type="text" id="resource_name" name="resource_name" maxlength="50" style="width: 200px;" required /><br />
+  <input id="photo_input" type="file" name="resource_photo" accept="image/jpeg,image/png" style="background-color: white;font-size: smaller;">
+  <button type="submit" form = "create-resource" id="resource_submit" class="btn btn-primary">Add</button>
+  </form>
+
+
+  <div id="gallery">
+    <h3>Gallery</h3>
+    {% for photo in photos %}
+    <img height="70" src="{{ url_for('static', filename='doc_uploads/' + photo) }}" alt="{{photo}}" title="{{photo}}">
+    {% endfor %}
+  </div>
+  </body>

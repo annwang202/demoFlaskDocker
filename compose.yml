@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - upload_data:/app/static/doc_uploads
+
+volumes:
+  upload_data:
